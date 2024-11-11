@@ -2,10 +2,9 @@
 import streamlit as st
 from transformers import pipeline
 
-# Step 2: Add Hugging Face Token to Streamlit Secrets
-HF_TOKENS="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"
+HF_TOKENS = "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"
 
-# Step 3: Access Hugging Face Token from Streamlit Secrets
+# Step 2: Access Hugging Face Token from Streamlit Secrets
 hf_token = st.secrets["HF_TOKENS"]
 
 # Initialize the Hugging Face model pipeline
@@ -14,7 +13,6 @@ try:
 except Exception as e:
     st.error("Error loading model. Please check your Hugging Face token and model compatibility.")
     st.stop()  # Stop execution if there's an issue loading the model
-
 # Step 4: Define the Symptom Analysis Function
 def analyze_symptoms(symptoms):
     """Analyzes symptoms input by the user and provides general health guidance."""
