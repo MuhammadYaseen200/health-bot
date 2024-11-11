@@ -1,11 +1,9 @@
 # Step 2: Import Libraries
 import streamlit as st
 from transformers import pipeline
-#from google.colab import userdata
 
-# Step 3: Set up Hugging Face Token and Model
-# Retrieve your Hugging Face token from Google Colab's secret management
-#hf_token = userdata.get('HF_TOKENS')
+# Step 3: Access Hugging Face Token from Streamlit Secrets
+hf_token = st.secrets["HF_TOKENS"]
 
 # Initialize the Hugging Face model pipeline
 try:
@@ -52,5 +50,3 @@ if st.button("Analyze Symptoms"):
     else:
         st.warning("Please enter some symptoms to analyze.")
 
-# Run Streamlit
-# Note: In Colab, use `!streamlit run app.py` in the terminal to launch the app
