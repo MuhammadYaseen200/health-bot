@@ -1,10 +1,15 @@
 import streamlit as st
+import os
+
+# Install PyTorch (or TensorFlow if you prefer)
+os.system('pip install torch')  # Use 'pip install tensorflow' if using TensorFlow
+
 from transformers import pipeline
 
 # Step 1: Access Hugging Face Token from Streamlit Secrets
 hf_token = st.secrets["HF_TOKENS"]
 
-# Step 2: Initialize the Hugging Face model pipeline with authentication
+# Step 2: Initialize the Hugging Face model pipeline
 try:
     qa_pipeline = pipeline("question-answering", model="deepset/roberta-base-squad2", use_auth_token=hf_token)
 except Exception as e:
