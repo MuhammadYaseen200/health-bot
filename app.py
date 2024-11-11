@@ -2,6 +2,9 @@
 import streamlit as st
 from transformers import pipeline
 
+# Step 2: Add Hugging Face Token to Streamlit Secrets
+HF_TOKENS="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"
+
 # Step 3: Access Hugging Face Token from Streamlit Secrets
 hf_token = st.secrets["HF_TOKENS"]
 
