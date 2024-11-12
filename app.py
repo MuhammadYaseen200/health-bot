@@ -1,20 +1,20 @@
 import streamlit as st
 import os
-
-# Install PyTorch (or TensorFlow if you prefer)
-os.system('pip install torch')  # Use 'pip install tensorflow' if using TensorFlow
-
 from transformers import pipeline
 
-# Step 1: Access Hugging Face Token from Streamlit Secrets
-hf_token = st.secrets["HF_TOKENS"]
+# Set the Hugging Face token directly (replace this with your token)
+hf_token = "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"
+
+# Initialize the Hugging Face model pipeline
+qa_pipeline = pipeline("question-answering", model="deepset/roberta-base-squad2", use_auth_token=hf_token)
+
 
 # Step 2: Initialize the Hugging Face model pipeline
 try:
     qa_pipeline = pipeline("question-answering", model="deepset/roberta-base-squad2", use_auth_token=hf_token)
 except Exception as e:
     st.error(f"Error loading model: {str(e)}")
-    st.stop()  # Stop execution if there's an issue loading the model
+    st.stop()
 
 # Step 3: Define the Symptom Analysis Function
 def analyze_symptoms(symptoms):
